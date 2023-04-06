@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .cart-item {
-    @apply px-6 py-2 border-2 border-gray-500 rounded-md mb-2 flex
+    @apply px-6 py-2 border-2 border-gray-500 rounded-md mb-2 flex items-center
 }

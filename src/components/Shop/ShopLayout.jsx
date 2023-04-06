@@ -17,6 +17,11 @@ const ShopLayout = () => {
       setCart([...carts, product]);
     }
   };
+
+  const removeFromCart = (id) => {
+    const remaining = carts.filter((ts) => ts._id !== id);
+    setCart(remaining);
+  };
   return (
     <div>
       <Header></Header>
@@ -25,7 +30,7 @@ const ShopLayout = () => {
           allTShirts={allTShirts}
           handleCart={handleCart}
         ></ProductContener>
-        <Cart carts={carts}></Cart>
+        <Cart removeFromCart={removeFromCart} carts={carts}></Cart>
       </div>
       <ToastContainer />
     </div>
