@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import Header from "../Header/Header";
 import { Outlet, useLoaderData } from "react-router-dom";
 import Cart from "./Cart/Cart";
 import ProductContener from "./Products/ProductContener";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+// diclear  context api
+
+export const ShopContext = createContext();
 
 const ShopLayout = () => {
   const allTShirts = useLoaderData();
@@ -25,13 +29,12 @@ const ShopLayout = () => {
   return (
     <div>
       <Header></Header>
-      <div className="grid grid-cols-shop-grid ">
-        <ProductContener
-          allTShirts={allTShirts}
-          handleCart={handleCart}
-        ></ProductContener>
-        <Cart removeFromCart={removeFromCart} carts={carts}></Cart>
-      </div>
+      <ShopContext.Provider value={handleCart}>
+        <div className="grid grid-cols-shop-grid ">
+          <ProductContener allTShirts={allTShirts}></ProductContener>
+          <Cart removeFromCart={removeFromCart} carts={carts}></Cart>
+        </div>
+      </ShopContext.Provider>
       <ToastContainer />
     </div>
   );

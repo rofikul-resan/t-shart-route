@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ShopContext } from "../ShopLayout";
 
-const Product = ({ productItem, handleCart }) => {
+const Product = ({ productItem }) => {
+  const handleCart = useContext(ShopContext);
   const { name, picture, price } = productItem;
   return (
     <div className="card h-full w-full bg-base-100 shadow-xl">
